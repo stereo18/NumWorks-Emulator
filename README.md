@@ -7,7 +7,6 @@
 <p align="center">L'émulateur de la calculatrice NumWorks basé sur l'émulateur en ligne !</p>
 <a align="center" href="https://www.numworks.com/" target="_blank"><p align="center">Cliquez ici pour acceder au site de NumWorks</p></a>
 
-![TuTune Player](https://i.imgur.com/eAtF8BO.png)
 
 ## Téléchargement
 
