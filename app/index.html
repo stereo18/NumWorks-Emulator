@@ -241,6 +241,79 @@ a.action svg {
       </div>
     </div>
     <script src="epsilon.js"></script>
+    <script>
+
+
+
+
+
+
+var Module;
+
+(function () {
+  var mainCanvas = document.getElementById('canvas');
+  var secondaryCanvasContext = document.getElementById('secondary-canvas').getContext('2d');
+  var epsilonLanguage = document.documentElement.lang || window.navigator.language.split('-')[0];
+  Module = {
+    canvas: mainCanvas,
+    arguments: ['--language', epsilonLanguage],
+    onDisplayRefresh: function() {
+      secondaryCanvasContext.drawImage(mainCanvas, 0, 0);
+    }
+  }
+
+  Epsilon(Module);
+
+  document.querySelectorAll('#keyboard span').forEach(function(span){
+    function eventHandler(keyHandler) {
+      return function(ev) {
+        var key = this.getAttribute('data-key');
+        keyHandler(key);
+        
+
+        ev.preventDefault();
+      };
+    }
+    
+
+
+
+
+
+    ['touchstart', 'mousedown'].forEach(function(type){
+      span.addEventListener(type, eventHandler(Module._IonSimulatorKeyboardKeyDown));
+    });
+    ['touchend', 'mouseup'].forEach(function(type){
+      span.addEventListener(type, eventHandler(Module._IonSimulatorKeyboardKeyUp));
+    });
+  });
+}());
+
+function screenshot() {
+  // toDataURL needs the canvas to be refreshed
+  Module._IonDisplayForceRefresh();
+
+  var canvas = document.getElementById('canvas');
+  var link = document.createElement('a');
+  link.download = 'screenshot.png';
+  link.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+  link.click();
+}
+
+    </script>
+    <script>
+document.getElementById("action-fullscreen").addEventListener("click", function(e){
+  if (document.body.className == "fullscreen") {
+    document.body.className = "";
+  } else {
+    document.body.className = "fullscreen";
+  }
+});
+
+document.getElementById("action-screenshot").addEventListener("click", function(e) {
+  screenshot();
+});
+    </script>
   </body>
 </html>
 
