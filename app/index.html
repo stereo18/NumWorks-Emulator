@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NumWorks Emulator</title>
+<style>
+body {
+  background: #C2C2C2;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.col-fullscreen {
+  display: none;
+  width: 60%;
+  float: left;
+}
+
+.col-fullscreen canvas {
+  margin-top: 7%;
+  width: 100%;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+body.fullscreen .col-fullscreen {
+  display: block;
+}
+
+body.fullscreen .col-calculator {
+  width: 35%;
+  float: left;
+}
+
+a.action {
+  display: block;
+  width: 4%;
+  padding: 1.5% 3%;
+  border: 1px solid black;
+  border-radius: 100px;
+  cursor: pointer;
+  opacity: 0.65;
+}
+
+a.action:hover {
+  opacity: 1.0;
+  background-color: rgba(0,0,0,0.125);
+}
+
+a.action svg {
+  display: block;
+}
+
+.calculator {
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  text-align: left; }
+  .calculator > img {
+    
+    max-height: 92.0vh;
+    max-width: 100%;
+    display: block; }
+  .calculator #canvas {
+    position: absolute;
+    top: 8.5%;
+    left: 16.25%;
+    width: 67.5%;
+    height: 26.3%;
+    border: 0 none; }
+  .calculator .actions {
+    position: absolute;
+    top: 94.0vh;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-left: 20px; 
+  }
+  .calculator .actions a {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #keyboard {
+    position: absolute;
+    top: 38.5%;
+    left: 10%;
+    width: 81%;
+    bottom: 5%; }
+    #keyboard span {
+      cursor: pointer;
+      border-radius: 40%;
+      display: block;
+      float: left; }
+    #keyboard span:hover {
+      background-color: rgba(0, 0, 0, 0.1); }
+    #keyboard span:active {
+      background-color: rgba(0, 0, 0, 0.2); }
+    #keyboard .nav {
+      position: absolute;
+      top: 0;
+      height: 27%;
+      width: 100%; }
+      #keyboard .nav span {
+        position: absolute; }
+      #keyboard .nav .left {
+        top: 36%;
+        left: 2%;
+        width: 15%;
+        height: 28%; }
+      #keyboard .nav .right {
+        top: 36%;
+        left: 17%;
+        width: 15%;
+        height: 28%; }
+      #keyboard .nav .top {
+        top: 7%;
+        left: 12%;
+        width: 10%;
+        height: 40%; }
+      #keyboard .nav .bottom {
+        top: 53%;
+        left: 12%;
+        width: 10%;
+        height: 40%; }
+      #keyboard .nav .home {
+        top: 15%;
+        left: 41%;
+        width: 16%;
+        height: 33%; }
+      #keyboard .nav .power {
+        top: 54%;
+        left: 42%;
+        width: 16%;
+        height: 33%; }
+      #keyboard .nav .ok {
+        top: 31%;
+        left: 67%;
+        width: 13%;
+        height: 38%; }
+      #keyboard .nav .back {
+        top: 31%;
+        left: 84%;
+        width: 13%;
+        height: 38%; }
+    #keyboard .functions {
+      position: absolute;
+      top: 26.75%;
+      left: 0.5%;
+      width: 98%; }
+      #keyboard .functions span {
+        margin: 1.7% 1%;
+        width: 14.65%;
+        height: 0;
+        padding-top: 10%; }
+    #keyboard .digits {
+      position: absolute;
+      top: 56.5%;
+      left: 0.5%;
+      width: 98%; }
+      #keyboard .digits span {
+        margin: 1.8% 2%;
+        width: 16%;
+        height: 0;
+        padding-top: 11.3%; }
+</style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-calculator">
+        <div class="calculator">
+          <img src="background.jpg" alt="NumWorks Calculator">
+          <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+<div id="keyboard">
+  <div class="nav">
+    <span class="left" data-key="0"></span>
+    <span class="top" data-key="1"></span>
+    <span class="bottom" data-key="2"></span>
+    <span class="right" data-key="3"></span>
+    <span class="ok" data-key="4"></span>
+    <span class="back" data-key="5"></span>
+    <span class="home" data-key="6"></span>
+    <span class="power" data-key="7"></span>
+  </div>
+  <div class="functions">
+    <span data-key="12"></span>
+    <span data-key="13"></span>
+    <span data-key="14"></span>
+    <span data-key="15"></span>
+    <span data-key="16"></span>
+    <span data-key="17"></span>
+    <span data-key="18"></span>
+    <span data-key="19"></span>
+    <span data-key="20"></span>
+    <span data-key="21"></span>
+    <span data-key="22"></span>
+    <span data-key="23"></span>
+    <span data-key="24"></span>
+    <span data-key="25"></span>
+    <span data-key="26"></span>
+    <span data-key="27"></span>
+    <span data-key="28"></span>
+    <span data-key="29"></span>
+  </div>
+  <div class="digits">
+    <span data-key="30"></span>
+    <span data-key="31"></span>
+    <span data-key="32"></span>
+    <span data-key="33"></span>
+    <span data-key="34"></span>
+    <span data-key="36"></span>
+    <span data-key="37"></span>
+    <span data-key="38"></span>
+    <span data-key="39"></span>
+    <span data-key="40"></span>
+    <span data-key="42"></span>
+    <span data-key="43"></span>
+    <span data-key="44"></span>
+    <span data-key="45"></span>
+    <span data-key="46"></span>
+    <span data-key="48"></span>
+    <span data-key="49"></span>
+    <span data-key="50"></span>
+    <span data-key="51"></span>
+    <span data-key="52"></span>
+  </div>
+</div>
+
+          <div class="actions">
+          </div>
+        </div>
+      </div>
+      <div class="col-fullscreen">
+        <canvas id="secondary-canvas" width="320" height="240"></canvas>
+      </div>
+    </div>
+    <script src="epsilon.js"></script>
+  </body>
+</html>
+

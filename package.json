@@ -1,0 +1,50 @@
+{
+  "name": "numworks",
+  "version": "1.0.0",
+  "productName": "NumWorks Emulator",
+  "description": "NumWorks Emulator",
+  "author": "stereo18 (https://github.com/stereo18)",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/stereo18/numworks-emulator",
+  "bugs": {
+    "url": "https://github.com/stereo18/numworks-emulator/issues"
+  },
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "cilinux": "node build.js WINDOWS && node build.js LINUX",
+    "cidarwin": "node build.js MAC",
+    "dist": "cross-env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true node build.js",
+    "dist:win": "npm run dist -- WINDOWS",
+    "dist:mac": "npm run dist -- MAC",
+    "dist:linux": "npm run dist -- LINUX",
+    "lint": "eslint --config .eslintrc.json .",
+    "publish": "electron-updater . -p always"
+  },
+  "engines": {
+    "node": "12.x.x"
+  },
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "ejs-electron": "^2.0.3",
+    "electron-json-config": "^1.5.3",
+    "electron-updater": "^4.3.4",
+    "fs-extra": "^9.0.0",
+    "jquery": "^3.5.1",
+    "lowdb": "^1.0.0",
+    "request": "^2.88.2",
+    "semver": "^7.3.2",
+    "tar-fs": "^2.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0",
+    "eslint": "^7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stereo18/tutuneplayer.git"
+  }
+}
