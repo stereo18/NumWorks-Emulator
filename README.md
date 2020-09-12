@@ -12,14 +12,6 @@
 
 Vous pouvez le télécharger pour windows depuis les [GitHub Releases](https://github.com/stereo18/NumWorks-Emulator/releases). Pour les autres plateformes, veuillez suivre le guide de dévelopement et build pour votre OS.
 
-## Console
-
-Pour utiliser la console de devellopement de l'environnement chromium :
-
-```console
-ctrl + shift + i
-```
-
 ## Developement
 
 ### Pré-requis
