@@ -4,7 +4,7 @@
 
 
 
-<p align="center">L'émulateur de la calculatrice NumWorks basé sur l'émulateur en ligne !</p>
+<p align="center">L'émulateur de la calculatrice NumWorks basé sur l'émulateur en telechargeable !</p>
 <a align="center" href="https://www.numworks.com/" target="_blank"><p align="center">Cliquez ici pour acceder au site de NumWorks</p></a>
 
 
@@ -69,4 +69,4 @@ Faire pour une plateforme spécifique.
 
 ### Sources.
 
-Les flux sont lus depuis les serveur de distribution respectif des radios présentées et l'application est basée sur le [heliosLauncher](https://github.com/dscalzi/helioslauncher)
+L'émulateur est basé sur la version telechargeable du site de [NumWorks](https://www.numworks.com/)
